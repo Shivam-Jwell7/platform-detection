@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="width: 100%; height: 50px; background: purple"></div>
+    <br />
+    <button onclick="redirect()">Detect Device</button>
+    <br />
+    <div id="displayDevice"></div>
+    <br />
+    <div style="display:flex; flex-direction:row">
+      <a id="fbAnchor" style="border:1px solid red; border-radius: 4px; padding:2px; cursor: pointer;" onclick="fbResirect()">
+        facebook
+      </a style="border:1px solid red; border-radius: 4px;">&nbsp;&nbsp;&nbsp;&nbsp;
+      <a id="twAnchor" style="border:1px solid red; border-radius: 4px; padding:2px; cursor: pointer;" onclick="twRedirect()">
+        Twitter
+      </a style="border:1px solid red; border-radius: 4px;">&nbsp;&nbsp;&nbsp;&nbsp;
+      <a id="whAnchor" style="border:1px solid red; border-radius: 4px; padding:2px; cursor: pointer;" onclick="whRedirect()">
+        Whatsapp
+      </a style="border:1px solid red; border-radius: 4px;"> 
+    </div>
+    <br />
+    <script>
+	var deviceDetail = document.getElementById("displayDevice");
+	var fbAnchor = document.getElementById("fbAnchor");
+      let redirect = () => {
+        console.log("App Version: ", window.navigator.appVersion);
+        console.log("User Agent", window.navigator.userAgent);
+        deviceDetail.innerHTML = window.navigator.appVersion;
+      };
+      let fbResirect = () => {
+        console.log("window.location.href: ", window.location.href);
+        if (/android/i.test(window.navigator.userAgent)) {
+          console.log("Device: Android");
+          setTimeout(function () {
+            window.open( "https://www.facebook.com/sharer/sharer.php?u="+"https://selectiva.org/cause/"+"donation-charity-club-for-army", '_blank')
+          }, 25);
+          window.open(
+            "fb://facewebmodal/f?href="+ "https://www.facebook.com/sharer/sharer.php?u="+"https://selectiva.org/cause/"+"donation-charity-club-for-army", '_blank')
+        } else if (/iPad|iPhone|iPod/.test(window.navigator.userAgent)) {
+          console.log("Device: iphone");
+		  setTimeout(function () {
+            window.location.href = "https://www.facebook.com/sharer/sharer.php?u="+"https://selectiva.org/cause/"+"donation-charity-club-for-army";
+          }, 25);
+		  window.location.href = "fb://sharer/sharer.php?u="+"https://selectiva.org/cause/"+"donation-charity-club-for-army";
+        } else {
+          console.log("web");
+          window.open(
+            "https://www.facebook.com/sharer/sharer.php?u=" +
+            "https://selectiva.org/cause/" +
+            "donation-charity-club-for-army",
+            '_black'
+            )
+        }
+      };
+      twRedirect = () => {
+        console.log("window.location.href: ", window.location.href);
+        if (/android/i.test(window.navigator.userAgent)) {
+          console.log("Device: Android");
+          setTimeout(function () {
+            window.location.href = "https://twitter.com/intent/tweet/?text=" +"donation-charity" +"&url=" +"https://selectiva.org/cause/" +"donation-charity-club-for-army";
+          }, 25);
+          window.location.href = "twitter://post/message="+"donation-charity"+"&url="+"https://selectiva.org/cause/donation-charity-club-for-army";
+        }
+        else if (/iPad|iPhone|iPod/.test(window.navigator.userAgent)) {
+          console.log("Device: iphone");
+		      setTimeout(function () {
+            window.location.href = "https://twitter.com/intent/tweet/?text=" +"donation-charity" +"&url=" +"https://selectiva.org/cause/" +"donation-charity-club-for-army";
+          }, 25);
+		      window.location.href = "twitter://tweet?/text=donation-charity&url=https://selectiva.org/cause/donation-charity-club-for-army";
+        }
+        else {
+          console.log("web");
+          window.open(
+            "https://twitter.com/intent/tweet/?text=" +
+            "donation-charity" +
+            "&url=" +
+            "https://selectiva.org/cause/" +
+            "donation-charity-club-for-army",
+            '_black'
+            )
+        }
+      }
+      whRedirect = () => {
+        console.log("window.location.href: ", window.location.href);
+        if (/android/i.test(window.navigator.userAgent)) {
+          console.log("Device: Android");
+          setTimeout(function () {
+            window.location.href = "https://api.whatsapp.com/send?text=" +"https://selectiva.org/cause/" +"donation-charity-club-for-army";
+          }, 25);
+          window.location.href = "whatsapp://send?text=" +"https://selectiva.org/cause/"+"donation-charity-club-for-army";
+        }  else if (/iPad|iPhone|iPod/.test(window.navigator.userAgent)) {
+          console.log("Device: iphone");
+		  setTimeout(function () {
+            window.location.href = "https://api.whatsapp.com/send?text=" +"https://selectiva.org/cause/"+"donation-charity-club-for-army";
+          }, 25);
+		  window.location.href = "https://api.whatsapp.com/send?text=" +
+            "https://selectiva.org/cause/" +
+            "donation-charity-club-for-army"
+        } else {
+          console.log("web");
+          window.open(
+            "https://api.whatsapp.com/send?text=" +
+            "https://selectiva.org/cause/" +
+            "donation-charity-club-for-army",
+            '_black'
+            )
+        }
+      }
+    </script>
+  </body>
+</html>
